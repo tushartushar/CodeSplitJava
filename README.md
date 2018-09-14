@@ -18,3 +18,4 @@ After the previous step is done:
 ```text
   java -jar CodeSplitJava.jar -i <path of the input source folder> -o <path of the output folder> -m <mode>
   ```
+  Here, <mode> could be either "method" or "class".

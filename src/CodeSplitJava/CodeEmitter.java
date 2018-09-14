@@ -71,7 +71,7 @@ public class CodeEmitter {
 					classFolder.toFile().mkdir();
 				for (SM_Method method : type.getMethodList()) {
 					Path path = Paths.get(classFolder.toString(), method.getName() + ".code");
-					writeToFile(path.toAbsolutePath().toString(), method.getMethodBody());
+					writeToFile(path.toAbsolutePath().toString(), method.getMethodDeclaration().toString());
 				}
 			}
 		}
