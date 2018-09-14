@@ -1,0 +1,15 @@
+Project Name,Package Name,Type Name,NOF,NOPF,NOM,NOPM,LOC,WMC,NC,DIT,LCOM,FANIN,FANOUT
+metrics,metricsPackage,InterfaceChild2,0,0,0,0,2,0,1,1,-1.0,0,0
+metrics,metricsPackage,ForeignClass3,0,0,0,0,2,0,0,0,-1.0,1,0
+metrics,metricsPackage,ForeignClass2,0,0,0,0,2,0,0,0,-1.0,1,0
+metrics,metricsPackage,ForeignClass5,1,1,0,0,3,0,0,0,-1.0,2,0
+metrics,metricsPackage,Child2,4,0,3,3,17,3,0,4,0.0,0,0
+metrics,metricsPackage,InterfaceGrandChild,0,0,0,0,2,0,1,2,-1.0,0,0
+metrics,metricsPackage,YetAnotherClass,0,0,0,0,2,0,1,0,-1.0,0,0
+metrics,metricsPackage,ForeignClass4,0,0,1,1,6,1,0,0,-1.0,2,1
+metrics,metricsPackage,Child1,4,0,1,1,19,3,0,4,0.0,0,2
+metrics,metricsPackage,TestMetricsClass,3,1,2,1,34,10,2,3,1.0,2,5
+metrics,metricsPackage,InterfaceParent,0,0,0,0,2,0,2,0,-1.0,0,0
+metrics,metricsPackage,ForeignClass1,1,0,0,0,3,0,0,0,-1.0,1,1
+metrics,metricsPackage,InterfaceChild1,0,0,0,0,2,0,1,1,-1.0,0,0
+metrics,metricsPackage,AnotherClass,0,0,0,0,2,0,1,1,-1.0,0,0

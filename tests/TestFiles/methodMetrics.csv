@@ -1,0 +1,8 @@
+Project Name,Package Name,Type Name,MethodName,LOC,CC,PC
+metrics,metricsPackage,Child2,Child2,4,1,0
+metrics,metricsPackage,Child2,Child2,3,1,0
+metrics,metricsPackage,Child2,Child2,4,1,0
+metrics,metricsPackage,ForeignClass4,ForeignClass4,4,1,0
+metrics,metricsPackage,Child1,Child1,13,3,0
+metrics,metricsPackage,TestMetricsClass,TestMetricsClass,27,9,5
+metrics,metricsPackage,TestMetricsClass,TestMetricsClass,2,1,0
