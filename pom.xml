@@ -62,7 +62,7 @@
 				<finalName>${project.artifactId}</finalName>
 					<archive>
 						<manifest>
-							<mainClass>Designite.Designite</mainClass>
+							<mainClass>CodeSplitJava.CodeSplitJava</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

@@ -26,6 +26,10 @@ public class InputArgs {
 		return outputFolder;
 	}
 
+	public String getMode()
+	{
+		return mode;
+	}
 	//At least, the source folder must be specified
 	private void checkEssentialInputs() {
 		if (sourceFolder==null)

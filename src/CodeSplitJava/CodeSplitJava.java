@@ -25,7 +25,13 @@ public class CodeSplitJava {
 		project.resolve();
 		if (Constants.DEBUG)
 			writeDebugLog(argsObj, project);
+		emitCode(argsObj, project);
 		Logger.log("Done.");
+	}
+
+	private static void emitCode(InputArgs argsObj, SM_Project project) {
+		CodeEmitter emitter = new CodeEmitter(argsObj, project);
+		emitter.emitCode();
 	}
 
 	private static void writeDebugLog(InputArgs argsObj, SM_Project project) {
@@ -38,54 +44,50 @@ public class CodeSplitJava {
 	private static InputArgs parseArguments(String[] args) {
 		Options argOptions = new Options();
 
-        Option input = new Option("i", "Input", true, "Input source folder path");
-        input.setRequired(true);
-        argOptions.addOption(input);
+		Option input = new Option("i", "Input", true, "Input source folder path");
+		input.setRequired(true);
+		argOptions.addOption(input);
 
-        Option output = new Option("o", "Output", true, "Path to the output folder");
-        output.setRequired(true);
-        argOptions.addOption(output);
-        
-        Option mode = new Option("m", "Mode", true, "Split mode (either method or class)");
-        mode.setRequired(true);
-        argOptions.addOption(mode);
+		Option output = new Option("o", "Output", true, "Path to the output folder");
+		output.setRequired(true);
+		argOptions.addOption(output);
 
-        CommandLineParser parser = new DefaultParser();
-        HelpFormatter formatter = new HelpFormatter();
-        CommandLine cmd = null;
+		Option mode = new Option("m", "Mode", true, "Split mode (either method or class)");
+		mode.setRequired(true);
+		argOptions.addOption(mode);
 
-        try {
-            cmd = parser.parse(argOptions, args);
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-            formatter.printHelp("CodeSplitJava", argOptions);
-            Logger.log("Quitting..");
-            System.exit(1);
-        }
-        if(cmd==null)
-        {
-        	System.out.println("Couldn't parse the command line arguments.");
-        	formatter.printHelp("CodeSplitJava", argOptions);
-        	Logger.log("Quitting..");
-        	System.exit(2);
-        }
-        
-        	String inputFolderPath = cmd.getOptionValue("Input");
-        String outputFolderPath = cmd.getOptionValue("Output");
-        String modeStr = cmd.getOptionValue("Mode");
-        
-        InputArgs inputArgs= null;
-        try
-        {
-        	inputArgs = new InputArgs(inputFolderPath, outputFolderPath, modeStr);
-        }
-        catch(IllegalArgumentException ex)
-        {
-        		Logger.log(ex.getMessage());
-        		Logger.log("Quitting..");
-        		System.exit(3);
-        }
-        return inputArgs;
+		CommandLineParser parser = new DefaultParser();
+		HelpFormatter formatter = new HelpFormatter();
+		CommandLine cmd = null;
+
+		try {
+			cmd = parser.parse(argOptions, args);
+		} catch (ParseException e) {
+			System.out.println(e.getMessage());
+			formatter.printHelp("CodeSplitJava", argOptions);
+			Logger.log("Quitting..");
+			System.exit(1);
+		}
+		if (cmd == null) {
+			System.out.println("Couldn't parse the command line arguments.");
+			formatter.printHelp("CodeSplitJava", argOptions);
+			Logger.log("Quitting..");
+			System.exit(2);
+		}
+
+		String inputFolderPath = cmd.getOptionValue("Input");
+		String outputFolderPath = cmd.getOptionValue("Output");
+		String modeStr = cmd.getOptionValue("Mode");
+
+		InputArgs inputArgs = null;
+		try {
+			inputArgs = new InputArgs(inputFolderPath, outputFolderPath, modeStr);
+		} catch (IllegalArgumentException ex) {
+			Logger.log(ex.getMessage());
+			Logger.log("Quitting..");
+			System.exit(3);
+		}
+		return inputArgs;
 	}
 
 	private static String getlogFileName(InputArgs argsObj) {
@@ -100,23 +102,20 @@ public class CodeSplitJava {
 		if (outputFolder == null)
 			return;
 		File folder = new File(outputFolder);
-		
+
 		if (folder.exists() && folder.isDirectory())
 			return;
-		
-		try
-		{
+
+		try {
 			boolean isCreated = folder.mkdirs();
-			if (!isCreated)
-			{
+			if (!isCreated) {
 				System.out.println("Couldn't create output folder.");
 			}
-		}
-		catch (Exception ex)
-		{
+		} catch (Exception ex) {
 			System.out.println("Couldn't create output folder. " + ex.getMessage());
 		}
 	}
+
 	private static PrintWriter getDebugLogStream(InputArgs argsObj) {
 		PrintWriter writer = null;
 		if (!argsObj.getOutputFolder().equals("")) {
