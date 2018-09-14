@@ -16,7 +16,7 @@ import CodeSplitJava.SourceModel.SM_Package;
 import CodeSplitJava.SourceModel.SM_Project;
 import CodeSplitJava.SourceModel.SM_Type;
 
-public class SM_FieldTest extends DesigniteTests {
+public class SM_FieldTest extends CodeSplitJavaTests {
 
 	private SM_Project project;
 	private SM_Field newField;
@@ -25,7 +25,7 @@ public class SM_FieldTest extends DesigniteTests {
 
 	@Before
 	public void setUp() {
-		project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_inputs", getTestingPath()));
+		project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_inputs", getTestingPath(), "method"));
 		project.parse();
 		project.resolve();
 		fields = project.getPackageList().get(0).getTypeList().get(0).getFieldList();

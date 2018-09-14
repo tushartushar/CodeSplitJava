@@ -216,20 +216,4 @@ public class SM_Project extends SM_SourceItem {
 		hierarchyGraph.computeConnectedComponents();
 		dependencyGraph.computeStronglyConnectedComponents();
 	}
-	
-	public void computeMetrics() {
-		Logger.log("Extracting metrics...");
-		CSVUtils.initializeCSVDirectory(name, inputArgs.getOutputFolder());
-		for (SM_Package pkg : packageList) {
-			pkg.extractTypeMetrics();
-		}
-	}
-
-	public void detectCodeSmells() {
-		Logger.log("Extracting code smells...");
-		for (SM_Package pkg : packageList) {
-			pkg.extractCodeSmells();
-		}
-	}
-
 }

@@ -17,14 +17,14 @@ import CodeSplitJava.SourceModel.SM_Package;
 import CodeSplitJava.SourceModel.SM_Project;
 import CodeSplitJava.SourceModel.SM_Type;
 
-public class SM_TypeTest extends DesigniteTests {
+public class SM_TypeTest extends CodeSplitJavaTests {
 	
 	private SM_Project project;
 	private SM_Type type;
 	
 	@Before
 	public void setUp() {
-		project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_package", getTestingPath()));
+		project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_package", getTestingPath(), "method"));
 	}
 	
 	@Test
@@ -74,7 +74,7 @@ public class SM_TypeTest extends DesigniteTests {
 	
 	@Test //too complicated for the moment 
 	public void SM_Type_check_isNestedClass() {		
-		SM_Project project = new SM_Project(new InputArgs(getTestingPath() + File.separator +"test_package", getTestingPath()));
+		SM_Project project = new SM_Project(new InputArgs(getTestingPath() + File.separator +"test_package", getTestingPath(), "method"));
 		project.parse();
 		List<SM_Package> packageList = project.getPackageList();
 		
@@ -121,7 +121,7 @@ public class SM_TypeTest extends DesigniteTests {
 	
 	@Test
 	public void SM_Type_countMethods() {
-		SM_Project project = new SM_Project(new InputArgs(getTestingPath() + File.separator +"test_package", getTestingPath()));
+		SM_Project project = new SM_Project(new InputArgs(getTestingPath() + File.separator +"test_package", getTestingPath(), "method"));
 		project.parse();
 		List<SM_Package> packageList = project.getPackageList();
 		
@@ -134,17 +134,5 @@ public class SM_TypeTest extends DesigniteTests {
 				}
 			}
 		}
-	}
-	
-	@Test
-	public void testHierarchyGraph() {
-		project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "metrics", getTestingPath()));
-		project.parse();
-		project.resolve();
-		
-		int expected = 6;
-		int actual = project.getHierarchyGraph().getConnectedComponnents().size();
-		
-		assertEquals(expected, actual);
 	}
 }

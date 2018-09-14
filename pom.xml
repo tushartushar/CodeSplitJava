@@ -44,7 +44,7 @@
 
 	<build>
 		<sourceDirectory>src</sourceDirectory>
-		<testSourceDirectory>tests/DesigniteTests</testSourceDirectory>
+		<testSourceDirectory>tests/CodeSplitJavaTests</testSourceDirectory>
 		<testResources>
 			<testResource>
 				<directory>tests/TestFiles</directory>

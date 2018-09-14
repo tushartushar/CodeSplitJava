@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public abstract class DesigniteTests {
+public abstract class CodeSplitJavaTests {
 	
 	protected static final String PARAMETER_TEST_INPUT_FILE_PATH = getTestingPath() + File.separator + "parameterTestInput.txt";
 	protected static final String CALLED_METHOD_TEST_INPUT_FILE_PATH = getTestingPath() + File.separator + "calledMethodTestInput.txt";

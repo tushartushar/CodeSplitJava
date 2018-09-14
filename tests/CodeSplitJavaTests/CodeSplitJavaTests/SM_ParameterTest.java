@@ -13,7 +13,7 @@ import CodeSplitJava.SourceModel.SM_Method;
 import CodeSplitJava.SourceModel.SM_Parameter;
 import CodeSplitJava.SourceModel.SM_Project;
 
-public class SM_ParameterTest extends DesigniteTests {
+public class SM_ParameterTest extends CodeSplitJavaTests {
 	
 	private SM_Project project;
 	private SM_Parameter newParameter;
@@ -22,7 +22,7 @@ public class SM_ParameterTest extends DesigniteTests {
 
 	@Before
 	public void setUp() {
-		project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_inputs", getTestingPath()));
+		project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_inputs", getTestingPath(), "method"));
 		project.parse();
 		project.resolve();
 		methods = project.getPackageList().get(0).getTypeList().get(0).getMethodList();

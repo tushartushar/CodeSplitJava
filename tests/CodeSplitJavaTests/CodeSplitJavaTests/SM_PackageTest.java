@@ -13,7 +13,7 @@ import CodeSplitJava.InputArgs;
 import CodeSplitJava.SourceModel.SM_Package;
 import CodeSplitJava.SourceModel.SM_Project;
 
-public class SM_PackageTest extends DesigniteTests {
+public class SM_PackageTest extends CodeSplitJavaTests {
 	
 	@Before
 	public void setup() {
@@ -22,13 +22,13 @@ public class SM_PackageTest extends DesigniteTests {
 
 	@Test
 	public void SM_Package_positive_case() {
-		SM_Project project = new SM_Project(new InputArgs(System.getProperty("user.dir"), getTestingPath()));
+		SM_Project project = new SM_Project(new InputArgs(System.getProperty("user.dir"), getTestingPath(), "method"));
 		project.parse();
 		List<SM_Package> pkgList = project.getPackageList();
 
 		for (SM_Package pkg : pkgList) {
 			if (pkg.getName().equals("CodeSplitJava.utils"))
-				assertEquals(pkg.getTypeList().size(), 2);
+				assertEquals(4, pkg.getTypeList().size());
 			if (pkg.getName().equals("CodeSplitJava.SourceModel"))
 				assertEquals(20, pkg.getTypeList().size());
 		}
@@ -37,7 +37,7 @@ public class SM_PackageTest extends DesigniteTests {
 	@Test
 	// assert that every CU in pkgCUList is included in projectCUList
 	public void SM_Package_cuList() {
-		SM_Project project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_package", getTestingPath()));
+		SM_Project project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_package", getTestingPath(), "method"));
 		project.parse();
 
 		List<CompilationUnit> projectCUList = project.getCompilationUnitList();
@@ -58,7 +58,7 @@ public class SM_PackageTest extends DesigniteTests {
 
 	@Test
 	public void SM_Package_countTypes() {
-		SM_Project project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_package", getTestingPath()));
+		SM_Project project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_package", getTestingPath(), "method"));
 		project.parse();
 		List<SM_Package> pkgList = project.getPackageList();
 
@@ -75,7 +75,7 @@ public class SM_PackageTest extends DesigniteTests {
 
 	@Test
 	public void SM_Package_getParent() {
-		SM_Project project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_package", getTestingPath()));
+		SM_Project project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_package", getTestingPath(), "method"));
 		project.parse();
 		List<SM_Package> pkgList = project.getPackageList();
 

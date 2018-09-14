@@ -14,7 +14,7 @@ import CodeSplitJava.SourceModel.SM_Package;
 import CodeSplitJava.SourceModel.SM_Project;
 import CodeSplitJava.SourceModel.SM_Type;
 
-public class SM_Method_CalledMethodsTests extends DesigniteTests {
+public class SM_Method_CalledMethodsTests extends CodeSplitJavaTests {
 
 	private SM_Project project;
 
@@ -22,7 +22,7 @@ public class SM_Method_CalledMethodsTests extends DesigniteTests {
 	@Before
 	public void setUp() {
 		createFileForArguments(CALLED_METHOD_TEST_INPUT_FILE_PATH, CALLED_METHOD_TEST_INPUT_FILE_CONTENT);
-		project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_inputs2", getTestingPath()));
+		project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_inputs2", getTestingPath(), "method"));
 		project.parse();
 		project.resolve();
 	}

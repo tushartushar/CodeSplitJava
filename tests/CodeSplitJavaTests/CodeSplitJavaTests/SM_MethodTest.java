@@ -17,7 +17,7 @@ import CodeSplitJava.SourceModel.SM_Package;
 import CodeSplitJava.SourceModel.SM_Project;
 import CodeSplitJava.SourceModel.SM_Type;
 
-public class SM_MethodTest extends DesigniteTests {
+public class SM_MethodTest extends CodeSplitJavaTests {
 
 	private SM_Project project;
 	private SM_Type type;
@@ -26,7 +26,7 @@ public class SM_MethodTest extends DesigniteTests {
 	@SuppressWarnings("unchecked")
 	@Before
 	public void setUp() {
-		project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_package", getTestingPath()));
+		project = new SM_Project(new InputArgs(getTestingPath() + File.separator + "test_package", getTestingPath(), "method"));
 		CompilationUnit unit = project.createCU(getTestingPath() + File.separator + "test_package" + File.separator + "TestMethods.java");
 		List<TypeDeclaration> typeList = unit.types();
 		
