@@ -28,7 +28,7 @@ class Resolver {
 		for (Name typeName : staticFieldAccesses) {
 			if (typeName.resolveBinding() instanceof ITypeBinding) {
 				ITypeBinding iType = (ITypeBinding) typeName.resolveBinding();
-				if (iType != null) {
+				if (iType != null && iType.getPackage() != null) {
 					SM_Package sm_pkg = findPackage(iType.getPackage().getName().toString(),
 							type.getParentPkg().getParentProject());
 					if (sm_pkg != null) {
@@ -260,7 +260,11 @@ class Resolver {
 	}
 	
 	private String getPackageName(String fullTypePath) {
-		return fullTypePath.substring(0, fullTypePath.lastIndexOf('.'));
+		int index = fullTypePath.lastIndexOf('.');
+		if (index >= 0)
+			return fullTypePath.substring(0, fullTypePath.lastIndexOf('.'));
+		else
+			return "default";
 	}
 	
 	private void manualInferUnresolvedTypeType(TypeInfo typeInfo, SM_Type type) {

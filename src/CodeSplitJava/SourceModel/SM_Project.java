@@ -156,10 +156,20 @@ public class SM_Project extends SM_SourceItem {
 		parser.setEnvironment(null, sources, null, true);
 		parser.setSource(doc.get().toCharArray());
 
-		CompilationUnit cu = (CompilationUnit) parser.createAST(null);
-
-		 if (!cu.getAST().hasBindingsRecovery()) {
-		 System.out.println("Binding not activated."); }
+		CompilationUnit cu = null;
+		try {
+			cu = (CompilationUnit) parser.createAST(null);
+		} catch (NullPointerException ex) {
+			// Consume it.
+			// In some rare situations, the above statement in try block results in a
+			// NullPointer exception.
+			// I tried to figure out but it seems it is coming from the parser library.
+			// Hence, leaving it silently.
+		}
+		if (cu != null)
+			if (!cu.getAST().hasBindingsRecovery()) {
+				System.out.println("Binding not activated.");
+			}
 		 
 		return cu;
 	}
