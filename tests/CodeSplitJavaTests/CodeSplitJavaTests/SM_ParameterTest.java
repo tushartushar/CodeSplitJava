@@ -35,13 +35,6 @@ public class SM_ParameterTest extends CodeSplitJavaTests {
 		assertEquals(newParameter.getName(), "name");
 	}
 
-	@Test
-	public void SM_Parameter_getType() {
-		parameters = getSpecificMethod("TestMethods").getParameterList();
-		newParameter = parameters.get(0);
-		assertEquals(newParameter.isPrimitiveType(), true);
-		assertEquals(newParameter.getPrimitiveType(), "String");
-	}
 
 	@Test
 	public void SM_Parameter_getType_from_source() {
@@ -49,12 +42,6 @@ public class SM_ParameterTest extends CodeSplitJavaTests {
 		newParameter = parameters.get(0);
 		assertEquals(newParameter.isPrimitiveType(), false);
 		assertEquals(newParameter.getType().getName(), "TestMethods");
-	}
-	@Test // is a List considered as SingleVariableDeclaration?
-	public void SM_Parameter_check_listParameter() {
-		parameters = getSpecificMethod("getList").getParameterList();
-		newParameter = parameters.get(0);
-		assertEquals(newParameter.getPrimitiveType(), "List<String>");
 	}
 	private SM_Method getSpecificMethod(String methodName) {
 		for(SM_Method method:methods)

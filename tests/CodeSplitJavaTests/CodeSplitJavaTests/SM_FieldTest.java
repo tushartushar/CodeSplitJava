@@ -100,10 +100,4 @@ public class SM_FieldTest extends CodeSplitJavaTests {
 		assertEquals(newField.isPrimitiveType(), false);
 		assertEquals(newField.getType().getName(), "TestMethods");
 	}
-
-	@Test // is a List considered as SingleVariableDeclaration?
-	public void SM_Method_check_listParameter() {
-		newField = fields.get(1);
-		assertEquals(newField.getPrimitiveType(), "List<String>");
-	}
 }
